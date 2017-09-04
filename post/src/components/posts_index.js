@@ -1,9 +1,18 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPosts } from '../actions'
 
-export default class App extends Component {
+class PostsIndex extends Component {
+  componentDidMount() {
+    this.props.fetchPosts();
+  }
   render() {
     return (
-      <div>React simple starter</div>
+      <div>
+        hi
+      </div>
     );
   }
 }
+
+export default connect(null, { fetchPosts })(PostsIndex);
