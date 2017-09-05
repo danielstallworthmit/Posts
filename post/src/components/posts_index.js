@@ -10,10 +10,13 @@ class PostsIndex extends Component {
 
   renderPosts() {
     const { posts } = this.props
+    console.log(posts);
     return _.map(posts, post => {
       return (
         <li className="list-group-item" key={post.id}>
-          {post.title}
+          <Link to={`/posts/${post.id}`}>
+            {post.title}
+          </Link>
         </li>
       );
     });
@@ -36,8 +39,8 @@ class PostsIndex extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return { posts: state.posts };
+function mapStateToProps( { posts } ) {
+  return { posts };
 }
 
 export default connect(mapStateToProps, { fetchPosts })(PostsIndex);
